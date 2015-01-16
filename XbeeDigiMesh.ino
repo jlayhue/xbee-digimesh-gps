@@ -108,6 +108,8 @@ void loop() {
       serialXbee.println(GPS.latitudeDegrees);
       serialXbee.print("Lon:");
       serialXbee.println(GPS.longitudeDegrees);
+      serialXbee.print("Satellites:");
+      serialXbee.println((int)GPS.satellites);
     }
   }
   
