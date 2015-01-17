@@ -78,22 +78,22 @@ void loop() {
   if (millis() - timer > 2000) { 
     timer = millis(); // reset the timer
     
-    Serial.print("\nTime: ");
-    Serial.print(GPS.hour, DEC); Serial.print(':');
-    Serial.print(GPS.minute, DEC); Serial.print(':');
-    Serial.print(GPS.seconds, DEC); Serial.print('.');
-    Serial.println(GPS.milliseconds);
+    serialXbee.print("\nTime: ");
+    serialXbee.print(GPS.hour, DEC); serialXbee.print(':');
+    serialXbee.print(GPS.minute, DEC); serialXbee.print(':');
+    serialXbee.print(GPS.seconds, DEC); serialXbee.print('.');
+    serialXbee.println(GPS.milliseconds);
     Serial.print("Date: ");
     Serial.print(GPS.day, DEC); Serial.print('/');
     Serial.print(GPS.month, DEC); Serial.print("/20");
     Serial.println(GPS.year, DEC);
-    Serial.print("Fix: "); Serial.print((int)GPS.fix);
-    Serial.print(" quality: "); Serial.println((int)GPS.fixquality); 
+    serialXbee.print("Fix: "); serialXbee.print((int)GPS.fix);
+    serialXbee.print(" quality: "); serialXbee.println((int)GPS.fixquality); 
     if (GPS.fix) {
-      Serial.print("Location: ");
-      Serial.print(GPS.latitude, 4); Serial.print(GPS.lat);
-      Serial.print(", "); 
-      Serial.print(GPS.longitude, 4); Serial.println(GPS.lon);
+      serialXbee.print("Location: ");
+      serialXbee.print(GPS.latitude, 4); serialXbee.print(GPS.lat);
+      serialXbee.print(", "); 
+      serialXbee.print(GPS.longitude, 4); serialXbee.println(GPS.lon);
       Serial.print("Location (in degrees, works with Google Maps): ");
       Serial.print(GPS.latitudeDegrees, 4);
       Serial.print(", "); 
@@ -102,14 +102,7 @@ void loop() {
       Serial.print("Speed (knots): "); Serial.println(GPS.speed);
       Serial.print("Angle: "); Serial.println(GPS.angle);
       Serial.print("Altitude: "); Serial.println(GPS.altitude);
-      Serial.print("Satellites: "); Serial.println((int)GPS.satellites);
-
-      serialXbee.print("Lat:");
-      serialXbee.println(GPS.latitudeDegrees);
-      serialXbee.print("Lon:");
-      serialXbee.println(GPS.longitudeDegrees);
-      serialXbee.print("Satellites:");
-      serialXbee.println((int)GPS.satellites);
+      serialXbee.print("Satellites: "); serialXbee.println((int)GPS.satellites);
     }
   }
   
